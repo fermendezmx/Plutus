@@ -19,6 +19,7 @@ namespace Plutus.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcConfiguration();
+            services.AddCorsConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,6 +30,7 @@ namespace Plutus.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
             app.UseMvc();
         }
     }

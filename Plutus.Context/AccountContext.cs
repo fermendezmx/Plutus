@@ -7,10 +7,10 @@ namespace Plutus.Context
 {
     public class AccountContext : BaseContext<AccountContext>
     {
-        public virtual DbSet<Account> Account { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Payment> Payment { get; set; }
-        public virtual DbSet<Receipt> Receipt { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<Receipt> Receipts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

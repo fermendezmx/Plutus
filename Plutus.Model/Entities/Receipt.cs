@@ -11,7 +11,7 @@ namespace Plutus.Model.Entities
         public string Title { get; set; }
         public int PaymentId { get; set; }
         public string Description { get; set; }
-        public int AccountId { get; set; }
+        public string AccountId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
 

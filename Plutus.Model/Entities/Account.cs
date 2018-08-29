@@ -10,7 +10,7 @@ namespace Plutus.Model.Entities
             Receipt = new HashSet<Receipt>();
         }
 
-        public int AccountId { get; set; }
+        public string AccountId { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

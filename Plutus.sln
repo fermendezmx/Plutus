@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Api", "Plutus.Api\Plutus.Api.csproj", "{1E96DF79-6732-40E5-BB60-3C6A9DCE8167}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plutus.Api", "Plutus.Api\Plutus.Api.csproj", "{1E96DF79-6732-40E5-BB60-3C6A9DCE8167}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{0ABF5FE7-DF73-4D1C-A23C-2063264FA329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1E96DF79-6732-40E5-BB60-3C6A9DCE8167} = {0ABF5FE7-DF73-4D1C-A23C-2063264FA329}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B60EE7A8-6173-400F-836F-7B3D9394C7A2}

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Plutus.Api.Bootstrap;
 
 namespace Plutus.Api
 {
@@ -17,7 +18,7 @@ namespace Plutus.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvcConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

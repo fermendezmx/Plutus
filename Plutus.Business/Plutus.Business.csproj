@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plutus.Model\Plutus.Model.csproj" />
+    <ProjectReference Include="..\Plutus.Repository\Plutus.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

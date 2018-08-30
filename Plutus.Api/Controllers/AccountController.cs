@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Plutus.Business.Services.Contracts;
 
 namespace Plutus.Api.Controllers
 {
+    [Authorize]
     [Route("api/account")]
     public class AccountController : Controller
     {

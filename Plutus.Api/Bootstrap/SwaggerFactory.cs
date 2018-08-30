@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Plutus.Api.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Plutus.Api.Bootstrap
@@ -20,6 +21,16 @@ namespace Plutus.Api.Bootstrap
                         Email = "jmendez@itexico.net"
                     }
                 });
+
+                x.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "Include your JWT for authentication in the API.",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+
+                x.DocumentFilter<SwaggerFilter>();
             });
         }
 

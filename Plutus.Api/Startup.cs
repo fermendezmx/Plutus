@@ -24,6 +24,7 @@ namespace Plutus.Api
         {
             services.AddMvcConfiguration();
             services.AddCorsConfiguration();
+            services.AddSwaggerConfiguration();
 
             // Register Services from Business Logic
             services.AddSingleton<IAccountService, AccountService>();
@@ -43,6 +44,7 @@ namespace Plutus.Api
             app.UseCors();
             app.UseMvc();
             app.UseAutoMapper();
+            app.UseSwaggerUX();
         }
     }
 }

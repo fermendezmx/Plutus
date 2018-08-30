@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Plutus.Api.Controllers.Base;
 using Plutus.Business.Services.Contracts;
 
 namespace Plutus.Api.Controllers
 {
     [Authorize]
     [Route("api/account")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
 
@@ -18,7 +19,7 @@ namespace Plutus.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_accountService.Read("test123"));
+            return Ok(_accountService.Read(UserId));
         }
     }
 }

@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Plutus.Api.Controllers.Base;
 using Plutus.Business.Services.Contracts;
 using Plutus.Model.Client;
+using System;
 
 namespace Plutus.Api.Controllers
 {
     [Authorize]
-    [Route("api/receipt")]
+    [Route("api/Receipt")]
     public class ReceiptController : BaseController
     {
         private readonly IReceiptService _receiptService;
@@ -21,6 +22,13 @@ namespace Plutus.Api.Controllers
         public IActionResult Post(_ReceiptLight data)
         {
             return Ok(_receiptService.Create(UserId, data));
+        }
+
+        [HttpGet]
+        [Route("AllByDate")]
+        public IActionResult GetByDate(DateTime date)
+        {
+            return Ok(_receiptService.ReadAllByDate(UserId, date));
         }
     }
 }

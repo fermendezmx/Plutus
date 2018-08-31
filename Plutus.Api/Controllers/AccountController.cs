@@ -6,7 +6,7 @@ using Plutus.Business.Services.Contracts;
 namespace Plutus.Api.Controllers
 {
     [Authorize]
-    [Route("api/account")]
+    [Route("api/Account")]
     public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;

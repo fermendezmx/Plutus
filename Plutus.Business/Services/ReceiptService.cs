@@ -4,6 +4,7 @@ using Plutus.Model.Client;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace Plutus.Business.Services
 {
@@ -38,6 +39,23 @@ namespace Plutus.Business.Services
             catch (Exception ex)
             {
                 throw new Exception("Unable to create receipt.");
+            }
+
+            return result;
+        }
+
+        public List<_Receipt> ReadAllByDate(string userId, DateTime date)
+        {
+            List<_Receipt> result = new List<_Receipt>();
+
+            try
+            {
+                List<Receipt> receipts = _receiptRepository.GetAll(x => x.AccountId == userId && date.Date == x.Date.Date);
+                result = Mapper.Map<List<_Receipt>>(receipts);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to get receipts.");
             }
 
             return result;

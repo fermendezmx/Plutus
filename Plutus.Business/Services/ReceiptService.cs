@@ -113,6 +113,21 @@ namespace Plutus.Business.Services
             return result;
         }
 
+        public void Delete(string userId, int receiptId)
+        {
+            try
+            {
+                Receipt receipt = _receiptRepository.GetById(receiptId, userId);
+                ThrowExceptionIfReceiptDoesntExists(receipt);
+                _receiptRepository.Delete(receipt);
+                _receiptRepository.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to delete receipt.");
+            }
+        }
+
         #endregion
 
         #region Private Methods

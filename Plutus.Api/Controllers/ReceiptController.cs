@@ -46,6 +46,14 @@ namespace Plutus.Api.Controllers
             return Ok(_receiptService.Update(UserId, data));
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _receiptService.Delete(UserId, id);
+            return Ok();
+        }
+
         #endregion
     }
 }

@@ -10,5 +10,6 @@ namespace Plutus.Business.Services.Contracts
         _Receipt Read(string userId, int receiptId);
         List<_Receipt> ReadAllByDate(string userId, DateTime date);
         _Receipt Update(string userId, _ReceiptUpdate data);
+        void Delete(string userId, int receiptId);
     }
 }

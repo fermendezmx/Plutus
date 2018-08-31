@@ -19,7 +19,7 @@ namespace Plutus.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(_ReceiptLight data)
+        public IActionResult Post(_ReceiptCreate data)
         {
             return Ok(_receiptService.Create(UserId, data));
         }
@@ -29,6 +29,12 @@ namespace Plutus.Api.Controllers
         public IActionResult GetByDate(DateTime date)
         {
             return Ok(_receiptService.ReadAllByDate(UserId, date));
+        }
+
+        [HttpPut]
+        public IActionResult Put(_ReceiptUpdate data)
+        {
+            return Ok(_receiptService.Update(UserId, data));
         }
     }
 }

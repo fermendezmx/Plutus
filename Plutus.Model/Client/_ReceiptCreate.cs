@@ -2,7 +2,7 @@
 
 namespace Plutus.Model.Client
 {
-    public class _ReceiptLight
+    public class _ReceiptCreate
     {
         public DateTime Date { get; set; } = DateTime.Now;
         public decimal Amount { get; set; } = 0.0M;

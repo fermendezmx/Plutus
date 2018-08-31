@@ -17,7 +17,9 @@ namespace Plutus.Business.Services
             _receiptRepository = receiptRepository;
         }
 
-        public _Receipt Create(string userId, _ReceiptLight data)
+        #region Public Methods
+
+        public _Receipt Create(string userId, _ReceiptCreate data)
         {
             _Receipt result = new _Receipt();
 
@@ -60,5 +62,51 @@ namespace Plutus.Business.Services
 
             return result;
         }
+
+        public _Receipt Update(string userId, _ReceiptUpdate data)
+        {
+            _Receipt result = new _Receipt();
+
+            try
+            {
+                Receipt receipt = _receiptRepository.GetById(data.ReceiptId);
+                ThrowExceptionIfIsInvalidReceipt(receipt, userId);
+
+                receipt.Date = data.Date;
+                receipt.Amount = data.Amount;
+                receipt.CategoryId = data.CategoryId;
+                receipt.Title = data.Title;
+                receipt.PaymentId = data.PaymentId;
+                receipt.Description = data.Description;
+
+                _receiptRepository.Update(receipt);
+                _receiptRepository.Save();
+
+                _receiptRepository.Load(receipt, nameof(Category));
+                _receiptRepository.Load(receipt, nameof(Payment));
+
+                result = Mapper.Map<_Receipt>(receipt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to update receipt.");
+            }
+
+            return result;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ThrowExceptionIfIsInvalidReceipt(Receipt receipt, string userId)
+        {
+            if (receipt == null || receipt.AccountId != userId)
+            {
+                throw new Exception("Invalid receipt.");
+            }
+        }
+
+        #endregion
     }
 }

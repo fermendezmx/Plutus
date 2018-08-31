@@ -12,6 +12,10 @@ namespace Plutus.Api.Bootstrap
             Mapper.Initialize(x =>
             {
                 x.CreateMap<Account, _Account>().ReverseMap();
+                x.CreateMap<Receipt, _Receipt>().ReverseMap();
+                x.CreateMap<Receipt, _ReceiptLight>().ReverseMap();
+                x.CreateMap<Category, _Category>().ReverseMap();
+                x.CreateMap<Payment, _Payment>().ReverseMap();
             });
         }
     }

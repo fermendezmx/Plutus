@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Plutus.Model.Client
+﻿namespace Plutus.Model.Client
 {
     public class _Account
     {
@@ -9,7 +7,5 @@ namespace Plutus.Model.Client
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Picture { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
     }
 }

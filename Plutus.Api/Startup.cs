@@ -29,9 +29,11 @@ namespace Plutus.Api
 
             // Register Services from Business Logic
             services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IReceiptService, ReceiptService>();
 
             // Register Repositories from Data Access
             services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IReceiptRepository, ReceiptRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,6 +16,8 @@ namespace Plutus.Business.Services
             _accountRepository = accountRepository;
         }
 
+        #region Public Methods
+
         public _Account Read(string id)
         {
             _Account result = new _Account();
@@ -32,5 +34,7 @@ namespace Plutus.Business.Services
 
             return result;
         }
+
+        #endregion
     }
 }

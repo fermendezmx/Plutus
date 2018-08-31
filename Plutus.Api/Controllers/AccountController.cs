@@ -16,10 +16,14 @@ namespace Plutus.Api.Controllers
             _accountService = accountService;
         }
 
+        #region Endpoints
+
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_accountService.Read(UserId));
         }
+
+        #endregion
     }
 }

@@ -18,6 +18,8 @@ namespace Plutus.Api.Controllers
             _receiptService = receiptService;
         }
 
+        #region Endpoints
+
         [HttpPost]
         public IActionResult Post(_ReceiptCreate data)
         {
@@ -43,5 +45,7 @@ namespace Plutus.Api.Controllers
         {
             return Ok(_receiptService.Update(UserId, data));
         }
+
+        #endregion
     }
 }

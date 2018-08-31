@@ -46,6 +46,24 @@ namespace Plutus.Business.Services
             return result;
         }
 
+        public _Receipt Read(string userId, int receiptId)
+        {
+            _Receipt result = new _Receipt();
+
+            try
+            {
+                Receipt receipt = _receiptRepository.GetById(receiptId, userId);
+                ThrowExceptionIfReceiptDoesntExists(receipt);
+                result = Mapper.Map<_Receipt>(receipt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to get receipt.");
+            }
+
+            return result;
+        }
+
         public List<_Receipt> ReadAllByDate(string userId, DateTime date)
         {
             List<_Receipt> result = new List<_Receipt>();
@@ -98,6 +116,14 @@ namespace Plutus.Business.Services
         #endregion
 
         #region Private Methods
+
+        private void ThrowExceptionIfReceiptDoesntExists(Receipt receipt)
+        {
+            if (receipt == null)
+            {
+                throw new Exception("Receipt doesn't exists.");
+            }
+        }
 
         private void ThrowExceptionIfIsInvalidReceipt(Receipt receipt, string userId)
         {

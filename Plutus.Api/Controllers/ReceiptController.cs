@@ -25,6 +25,13 @@ namespace Plutus.Api.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Ok(_receiptService.Read(UserId, id));
+        }
+
+        [HttpGet]
         [Route("AllByDate")]
         public IActionResult GetByDate(DateTime date)
         {

@@ -20,6 +20,14 @@ namespace Plutus.Repository
 
         #region Contract
 
+        public Receipt GetById(int id, string userId)
+        {
+            return _context.Receipts
+                .Include(x => x.Category)
+                .Include(x => x.Payment)
+                .FirstOrDefault(x => x.ReceiptId == id && x.AccountId == userId);
+        }
+
         public List<Receipt> GetAll(Expression<Func<Receipt, bool>> filter)
         {
             return _context.Receipts

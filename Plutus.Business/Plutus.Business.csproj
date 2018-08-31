@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Plutus.Infrastructure\Plutus.Infrastructure.csproj" />
     <ProjectReference Include="..\Plutus.Model\Plutus.Model.csproj" />
     <ProjectReference Include="..\Plutus.Repository\Plutus.Repository.csproj" />
   </ItemGroup>

@@ -1,9 +1,10 @@
-﻿using Plutus.Model.Client;
+﻿using Plutus.Infrastructure.Shared;
+using Plutus.Model.Client;
 
 namespace Plutus.Business.Services.Contracts
 {
     public interface IAccountService
     {
-        _Account Read(string id);
+        XHRResponse<_Account> Read(string id);
     }
 }

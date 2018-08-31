@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Plutus.Business.Services.Contracts;
+using Plutus.Infrastructure.Shared;
 using Plutus.Model.Client;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
@@ -18,18 +19,20 @@ namespace Plutus.Business.Services
 
         #region Public Methods
 
-        public _Account Read(string id)
+        public XHRResponse<_Account> Read(string id)
         {
-            _Account result = new _Account();
+            XHRResponse<_Account> result = new XHRResponse<_Account>();
 
             try
             {
                 Account account = _accountRepository.GetById(id);
-                result = Mapper.Map<_Account>(account);
+                result.Data = Mapper.Map<_Account>(account);
+                result.Succeeded = true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Unable to get user.");
+                result.Message = "Unable to get user.";
+                result.Succeeded = false;
             }
 
             return result;

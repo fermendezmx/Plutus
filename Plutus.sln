@@ -15,9 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{74564B86-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plutus.Model", "Plutus.Model\Plutus.Model.csproj", "{E43BC997-C7E1-49C0-91DA-A614D0136F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Context", "Plutus.Context\Plutus.Context.csproj", "{634D5ACB-9D38-4684-9EE5-F123DE36DFE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plutus.Context", "Plutus.Context\Plutus.Context.csproj", "{634D5ACB-9D38-4684-9EE5-F123DE36DFE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Repository", "Plutus.Repository\Plutus.Repository.csproj", "{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plutus.Repository", "Plutus.Repository\Plutus.Repository.csproj", "{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5D9D6DF6-7251-4403-B441-8A6A2B91C699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Infrastructure", "Plutus.Infrastructure\Plutus.Infrastructure.csproj", "{390AA35D-E6BF-47E3-BD00-D8B6EABA3426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{390AA35D-E6BF-47E3-BD00-D8B6EABA3426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390AA35D-E6BF-47E3-BD00-D8B6EABA3426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390AA35D-E6BF-47E3-BD00-D8B6EABA3426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390AA35D-E6BF-47E3-BD00-D8B6EABA3426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{E43BC997-C7E1-49C0-91DA-A614D0136F14} = {74564B86-DBDE-4AD7-94F3-99A9CC5B95FA}
 		{634D5ACB-9D38-4684-9EE5-F123DE36DFE0} = {74564B86-DBDE-4AD7-94F3-99A9CC5B95FA}
 		{E9D7CB43-BF8A-4913-B74B-321C70D4C3AD} = {74564B86-DBDE-4AD7-94F3-99A9CC5B95FA}
+		{390AA35D-E6BF-47E3-BD00-D8B6EABA3426} = {5D9D6DF6-7251-4403-B441-8A6A2B91C699}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B60EE7A8-6173-400F-836F-7B3D9394C7A2}

@@ -50,8 +50,7 @@ namespace Plutus.Api.Controllers
         [Route("{id}")]
         public IActionResult Delete(int id)
         {
-            _receiptService.Delete(UserId, id);
-            return Ok();
+            return Ok(_receiptService.Delete(UserId, id));
         }
 
         #endregion

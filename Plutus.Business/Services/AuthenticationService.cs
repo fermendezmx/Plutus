@@ -48,12 +48,10 @@ namespace Plutus.Business.Services
 
                         request.Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
                         HttpResponseMessage response = client.SendAsync(request).Result;
+                        ThrowExceptionIfHasInvalidCredentials(response.IsSuccessStatusCode);
 
-                        if (response.IsSuccessStatusCode)
-                        {
-                            result.Data = response.Content.ReadAsAsync<_Token>().Result;
-                            result.Succeeded = true;
-                        }
+                        result.Data = response.Content.ReadAsAsync<_Token>().Result;
+                        result.Succeeded = true;
                     }
                 }
             }
@@ -64,6 +62,18 @@ namespace Plutus.Business.Services
             }
 
             return result;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ThrowExceptionIfHasInvalidCredentials(bool isAuthenticated)
+        {
+            if (!isAuthenticated)
+            {
+                throw new Exception("Invalid credentials.");
+            }
         }
 
         #endregion

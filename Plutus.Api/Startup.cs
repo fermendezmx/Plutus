@@ -27,8 +27,12 @@ namespace Plutus.Api
             services.AddCorsConfiguration();
             services.AddSwaggerConfiguration();
 
+            // Register Configuration to be injected in modules
+            services.AddSingleton(Configuration);
+
             // Register Services from Business Logic
             services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IReceiptService, ReceiptService>();
 
             // Register Repositories from Data Access

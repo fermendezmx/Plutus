@@ -19,13 +19,13 @@ namespace Plutus.Business.Services
 
         #region Public Methods
 
-        public XHRResponse<_Account> Read(string id)
+        public XHRResponse<_Account> Read(string userId)
         {
             XHRResponse<_Account> result = new XHRResponse<_Account>();
 
             try
             {
-                Account account = _accountRepository.GetById(id);
+                Account account = _accountRepository.GetById(userId);
                 result.Data = Mapper.Map<_Account>(account);
                 result.Succeeded = true;
             }

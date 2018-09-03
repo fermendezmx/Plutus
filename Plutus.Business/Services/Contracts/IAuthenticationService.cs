@@ -3,8 +3,8 @@ using Plutus.Model.Client;
 
 namespace Plutus.Business.Services.Contracts
 {
-    public interface IAccountService
+    public interface IAuthenticationService
     {
-        XHRResponse<_Account> Read(string userId);
+        XHRResponse<_Token> Login(_Credentials data);
     }
 }

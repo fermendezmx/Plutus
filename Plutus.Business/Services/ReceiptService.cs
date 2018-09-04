@@ -76,7 +76,7 @@ namespace Plutus.Business.Services
 
             try
             {
-                List<Receipt> receipts = _receiptRepository.GetAll(x => x.AccountId == userId && date.Date == x.Date.Date);
+                List<Receipt> receipts = _receiptRepository.GetAll(x => x.AccountId == userId && date.Date == x.TransactionDate.Date);
                 result.Data = Mapper.Map<List<_Receipt>>(receipts);
                 result.Succeeded = true;
             }
@@ -98,7 +98,7 @@ namespace Plutus.Business.Services
                 Receipt receipt = _receiptRepository.GetById(data.ReceiptId);
                 ThrowExceptionIfIsInvalidReceipt(receipt, userId);
 
-                receipt.Date = data.Date;
+                receipt.TransactionDate = data.TransactionDate;
                 receipt.Amount = data.Amount;
                 receipt.CategoryId = data.CategoryId;
                 receipt.Title = data.Title;

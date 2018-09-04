@@ -2,7 +2,10 @@
 using Plutus.Context;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Plutus.Repository
 {
@@ -14,6 +17,19 @@ namespace Plutus.Repository
         {
             _context = new AccountContext();
         }
+
+        #region Contract
+
+        public List<Receipt> GetReceipts(Expression<Func<Receipt, bool>> filter)
+        {
+            return _context.Receipts
+                .Include(x => x.Category)
+                .Where(filter)
+                .OrderBy(x => x.TransactionDate)
+                .ToList();
+        }
+
+        #endregion
 
         #region Base
 

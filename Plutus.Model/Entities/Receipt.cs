@@ -5,7 +5,7 @@ namespace Plutus.Model.Entities
     public class Receipt
     {
         public int ReceiptId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
         public int CategoryId { get; set; }
         public string Title { get; set; }

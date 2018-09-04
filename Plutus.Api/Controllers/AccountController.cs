@@ -24,6 +24,13 @@ namespace Plutus.Api.Controllers
             return Ok(_accountService.Read(UserId));
         }
 
+        [HttpGet]
+        [Route("Balance/{year}/{month}")]
+        public IActionResult GetBalance(int year, int month)
+        {
+            return Ok(_accountService.ReadBalance(UserId, year, month));
+        }
+
         #endregion
     }
 }

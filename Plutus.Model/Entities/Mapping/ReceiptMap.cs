@@ -12,7 +12,7 @@ namespace Plutus.Model.Entities.Mapping
             // Primary Key
             builder.HasKey(x => x.ReceiptId);
 
-            builder.Property(x => x.Date)
+            builder.Property(x => x.TransactionDate)
                 .IsRequired();
 
             builder.Property(x => x.Amount)

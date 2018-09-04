@@ -17,6 +17,11 @@ namespace Plutus.Api.Controllers
 
         #region Endpoints
 
+        /// <summary>
+        /// Authenticate user credentials
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
         public IActionResult Login(_Credentials data)

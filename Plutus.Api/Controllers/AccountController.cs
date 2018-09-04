@@ -19,7 +19,7 @@ namespace Plutus.Api.Controllers
         #region Endpoints
 
         /// <summary>
-        /// Get profile of current user
+        /// Get profile of user
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -28,6 +28,12 @@ namespace Plutus.Api.Controllers
             return Ok(_accountService.Read(UserId));
         }
 
+        /// <summary>
+        /// Get balance and summary of the month
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Balance/{year}/{month}")]
         public IActionResult GetBalance(int year, int month)

@@ -17,6 +17,10 @@ namespace Plutus.Api.Controllers
 
         #region Endpoints
 
+        /// <summary>
+        /// Get all payment methods
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("All")]
         public IActionResult Get()

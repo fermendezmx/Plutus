@@ -17,6 +17,11 @@ namespace Plutus.Api.Controllers
 
         #region Endpoints
 
+        /// <summary>
+        /// Get all categories by type: Income or Expense
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{typeId}")]
         public IActionResult Get(int typeId)

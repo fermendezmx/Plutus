@@ -34,11 +34,13 @@ namespace Plutus.Api
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<ICategoryService, CategoryService>();
+            services.AddSingleton<IPaymentService, PaymentService>();
             services.AddSingleton<IReceiptService, ReceiptService>();
 
             // Register Repositories from Data Access
             services.AddSingleton<IAccountRepository, AccountRepository>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
+            services.AddSingleton<IPaymentRepository, PaymentRepository>();
             services.AddSingleton<IReceiptRepository, ReceiptRepository>();
         }
 

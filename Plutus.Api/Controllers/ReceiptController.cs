@@ -41,7 +41,7 @@ namespace Plutus.Api.Controllers
         }
 
         [HttpGet]
-        [Route("Search")]
+        [Route("Search/{title}")]
         public IActionResult GetBySearch(string title)
         {
             return Ok(_receiptService.ReadAllBySearch(UserId, title));

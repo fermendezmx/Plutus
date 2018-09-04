@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Plutus.Business.Common;
 using Plutus.Business.Services.Contracts;
 using Plutus.Infrastructure.Shared;
 using Plutus.Model.Client;
+using Plutus.Model.Common;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
 using System;

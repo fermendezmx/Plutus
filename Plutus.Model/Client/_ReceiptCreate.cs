@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plutus.Model.Common;
+using System;
 
 namespace Plutus.Model.Client
 {
@@ -8,7 +9,7 @@ namespace Plutus.Model.Client
         public decimal Amount { get; set; } = 0.0M;
         public int CategoryId { get; set; }
         public string Title { get; set; } = string.Empty;
-        public int PaymentId { get; set; }
+        public int PaymentId { get; set; } = (int)PlutusPaymentMethod.Cash;
         public string Description { get; set; } = string.Empty;
     }
 }

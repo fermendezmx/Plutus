@@ -33,10 +33,12 @@ namespace Plutus.Api
             // Register Services from Business Logic
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<ICategoryService, CategoryService>();
             services.AddSingleton<IReceiptService, ReceiptService>();
 
             // Register Repositories from Data Access
             services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddSingleton<ICategoryRepository, CategoryRepository>();
             services.AddSingleton<IReceiptRepository, ReceiptRepository>();
         }
 

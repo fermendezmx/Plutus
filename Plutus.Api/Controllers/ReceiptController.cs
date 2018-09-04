@@ -34,7 +34,7 @@ namespace Plutus.Api.Controllers
         }
 
         [HttpGet]
-        [Route("AllByDate")]
+        [Route("Detail/{date}")]
         public IActionResult GetByDate(DateTime date)
         {
             return Ok(_receiptService.ReadAllByDate(UserId, date));

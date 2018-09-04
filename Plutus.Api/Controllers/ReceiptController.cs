@@ -40,6 +40,13 @@ namespace Plutus.Api.Controllers
             return Ok(_receiptService.ReadAllByDate(UserId, date));
         }
 
+        [HttpGet]
+        [Route("Search")]
+        public IActionResult GetBySearch(string title)
+        {
+            return Ok(_receiptService.ReadAllBySearch(UserId, title));
+        }
+
         [HttpPut]
         public IActionResult Put(_ReceiptUpdate data)
         {

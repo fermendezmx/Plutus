@@ -89,6 +89,25 @@ namespace Plutus.Business.Services
             return result;
         }
 
+        public XHRResponse<List<_Receipt>> ReadAllBySearch(string userId, string title)
+        {
+            XHRResponse<List<_Receipt>> result = new XHRResponse<List<_Receipt>>();
+
+            try
+            {
+                List<Receipt> receipts = _receiptRepository.GetAll(x => x.AccountId == userId && x.Title.Contains(title));
+                result.Data = Mapper.Map<List<_Receipt>>(receipts);
+                result.Succeeded = true;
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Unable to get receipts.";
+                result.Succeeded = false;
+            }
+
+            return result;
+        }
+
         public XHRResponse<_Receipt> Update(string userId, _ReceiptUpdate data)
         {
             XHRResponse<_Receipt> result = new XHRResponse<_Receipt>();

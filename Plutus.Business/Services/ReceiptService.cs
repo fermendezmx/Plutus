@@ -139,7 +139,7 @@ namespace Plutus.Business.Services
                     result.Data.Summary.Add(new _CategorySummary
                     {
                         Category = Mapper.Map<_Category>(group.Category),
-                        Receipts = Mapper.Map<List<_Receipt>>(group.Receipts)
+                        Amount = group.Receipts.Sum(x => x.Amount)
                     });
                 }
 

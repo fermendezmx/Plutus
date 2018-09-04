@@ -11,6 +11,7 @@ namespace Plutus.Business.Services.Contracts
         XHRResponse<_Receipt> Read(string userId, int receiptId);
         XHRResponse<List<_Receipt>> ReadAllByDate(string userId, DateTime date);
         XHRResponse<List<_Receipt>> ReadAllBySearch(string userId, string title);
+        XHRResponse<_Analysis> ReadByTypeForAnalysis(string userId, int year, int month, int typeId);
         XHRResponse<_Receipt> Update(string userId, _ReceiptUpdate data);
         XHRResponse<bool> Delete(string userId, int receiptId);
     }

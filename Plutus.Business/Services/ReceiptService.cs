@@ -6,6 +6,7 @@ using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Plutus.Business.Services
 {
@@ -95,13 +96,59 @@ namespace Plutus.Business.Services
 
             try
             {
-                List<Receipt> receipts = _receiptRepository.GetAll(x => x.AccountId == userId && x.Title.Contains(title));
+                List<Receipt> receipts = _receiptRepository
+                    .GetAll(x => x.AccountId == userId && x.Title.Contains(title))
+                    .OrderByDescending(x => x.TransactionDate)
+                    .ToList();
+
                 result.Data = Mapper.Map<List<_Receipt>>(receipts);
                 result.Succeeded = true;
             }
             catch (Exception ex)
             {
                 result.Message = "Unable to get receipts.";
+                result.Succeeded = false;
+            }
+
+            return result;
+        }
+
+        public XHRResponse<_Analysis> ReadByTypeForAnalysis(string userId, int year, int month, int typeId)
+        {
+            XHRResponse<_Analysis> result = new XHRResponse<_Analysis>();
+
+            try
+            {
+                List<Receipt> receipts = _receiptRepository
+                    .GetAll(x => x.AccountId == userId
+                        && x.TransactionDate.Year == year
+                        && x.TransactionDate.Month == month
+                        && x.Category.TypeId == typeId);
+
+                var groups = from Receipt receipt in receipts
+                             group receipt by receipt.Category
+                     into items
+                             select new
+                             {
+                                 Category = items.Key,
+                                 Receipts = items
+                             };
+
+                foreach (var group in groups)
+                {
+                    result.Data.Summary.Add(new _CategorySummary
+                    {
+                        Category = Mapper.Map<_Category>(group.Category),
+                        Receipts = Mapper.Map<List<_Receipt>>(group.Receipts)
+                    });
+                }
+
+                result.Data.Summary = result.Data.Summary.OrderByDescending(x => x.Amount).ToList();
+                result.Succeeded = true;
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Unable to get analysis.";
                 result.Succeeded = false;
             }
 

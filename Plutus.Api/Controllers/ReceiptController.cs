@@ -47,6 +47,13 @@ namespace Plutus.Api.Controllers
             return Ok(_receiptService.ReadAllBySearch(UserId, title));
         }
 
+        [HttpGet]
+        [Route("Analysis/{year}/{month}/{typeId}")]
+        public IActionResult GetByType(int year, int month, int typeId)
+        {
+            return Ok(_receiptService.ReadByTypeForAnalysis(UserId, year, month, typeId));
+        }
+
         [HttpPut]
         public IActionResult Put(_ReceiptUpdate data)
         {

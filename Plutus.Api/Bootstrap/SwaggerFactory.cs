@@ -2,6 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Plutus.Api.Filters;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Plutus.Api.Bootstrap
 {
@@ -31,6 +34,10 @@ namespace Plutus.Api.Bootstrap
                 });
 
                 x.DocumentFilter<SwaggerFilter>();
+
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                x.IncludeXmlComments(xmlPath);
             });
         }
 

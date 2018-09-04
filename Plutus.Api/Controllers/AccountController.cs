@@ -18,6 +18,10 @@ namespace Plutus.Api.Controllers
 
         #region Endpoints
 
+        /// <summary>
+        /// Get profile of current user
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {

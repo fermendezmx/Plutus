@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//#region Components
 
-namespace Plutus.Web.ClientApp.src.app.components
-{
-    public class index
-    {
-    }
-}
+export { AppComponent } from './app/app.component';
+export { NavMenuComponent } from './nav-menu/nav-menu.component';
+export { HomeComponent } from './home/home.component';
+export { CounterComponent } from './counter/counter.component';
+export { FetchDataComponent } from './fetch-data/fetch-data.component';
+
+//#endregion

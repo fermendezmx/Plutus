@@ -28,6 +28,10 @@ Obj/
 
 # Visual Studio 2015 cache/options directory
 .vs/*
+Plutus.Web/wwwroot/dist/
+Plutus.Web/ClientApp/dist/
+Plutus.Web/Properties/
+Plutus.Web/ClientApp/node_modules
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

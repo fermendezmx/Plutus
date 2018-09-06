@@ -12,5 +12,6 @@ export { Payment } from './entities/payment';
 export { Receipt } from './entities/receipt';
 export { ReceiptCreate } from './entities/receipt.create';
 export { ReceiptUpdate } from './entities/receipt.update';
+export { Token } from './entities/token';
 
 //#endregion

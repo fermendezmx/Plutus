@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './modules/index';
+import { AppRoutingModule, AppJwtModule } from './modules/index';
 
 //#endregion
 
@@ -38,7 +38,8 @@ import {
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        AppJwtModule
     ],
     providers: [
         AccountService,

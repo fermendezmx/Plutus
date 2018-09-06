@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { XHRResponse, Receipt, ReceiptCreate, ReceiptUpdate } from '../models/index';
 import { XHRHelper } from '../helpers/index';
+import { XHRResponse, Receipt, ReceiptCreate, ReceiptUpdate, Analysis } from '../models/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -45,6 +45,13 @@ export class ReceiptService {
 
     public getAllBySearch(title: string, onSuccess: (data: any) => void, onError: (error: any) => void): void {
         this.http.get<XHRResponse<Receipt[]>>(this.baseUrl + `search/${title}`)
+            .subscribe(result => {
+                XHRHelper.response(result, onSuccess, onError);
+            });
+    }
+
+    public getAnalysis(year: number, month: number, typeId: number, onSuccess: (data: any) => void, onError: (error: any) => void): void {
+        this.http.get<XHRResponse<Analysis>>(this.baseUrl + `analysis/${year}/${month}/${typeId}`)
             .subscribe(result => {
                 XHRHelper.response(result, onSuccess, onError);
             });

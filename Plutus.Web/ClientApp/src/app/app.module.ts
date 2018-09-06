@@ -17,21 +17,36 @@ import {
 
 //#endregion
 
+//#region Services
+
+import {
+    AccountService, AuthenticationService, CategoryService,
+    PaymentService, ReceiptService
+} from './services/index';
+
+//#endregion
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavMenuComponent,
+        HomeComponent,
+        CounterComponent,
+        FetchDataComponent
+    ],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        HttpClientModule,
+        FormsModule,
+        AppRoutingModule
+    ],
+    providers: [
+        AccountService,
+        AuthenticationService,
+        CategoryService,
+        PaymentService,
+        ReceiptService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

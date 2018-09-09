@@ -1,13 +1,16 @@
 <div>
+    <button (click)="setCalendar(true)">Expenses</button>
+    <button (click)="setCalendar(false)">Incomes</button>
+</div>
+<div>
     <mbsc-form>
         <div class="mbsc-form-group">
             <div class="mbsc-form-group-title">
                 <div>Income: ${{income}}</div>
                 <div>Expense: ${{expense}}</div>
-                <div>Balance: ${{balance}}</div>
+                <div>Balance: ${{total}}</div>
             </div>
-            <mbsc-calendar [(ngModel)]="labelDay"
-                           display="inline"
+            <mbsc-calendar display="inline"
                            [labels]="summary"
                            (onSet)="setDay($event)"
                            (onMonthChange)="changeMonth($event)"></mbsc-calendar>

@@ -13,9 +13,10 @@ export class HomeComponent {
 
     private year: number;
     private summary = [];
+    private total: string;
     private income: string;
     private expense: string;
-    private balance: string;
+    private balance: Balance;
     private receipts: Receipt[] = [];
 
     //#endregion
@@ -46,10 +47,11 @@ export class HomeComponent {
 
         this.accountService.getBalance(this.year, month,
             (result: Balance) => {
+                this.balance = result;
                 this.income = this.formatMoney(result.Income);
                 this.expense = this.formatMoney(result.Expense);
-                this.balance = this.formatMoney(result.Balance);
-                this.setSummary(result);
+                this.total = this.formatMoney(result.Balance);
+                this.setSummary(true);
 
                 this.getDetail(`${this.year}-${month}-${today.getDate()}`);
             }, () => { });
@@ -78,15 +80,33 @@ export class HomeComponent {
         node.text(title + ' ' + this.year);
     }
 
-    private setSummary(balance: Balance) {
-        balance.Summary.forEach((x) => {
-            let date = new Date(x.Date);
+    private setCalendar(showExpenses: boolean) {
+        this.summary = [];
+        this.setSummary(showExpenses);
+    }
 
-            this.summary.push({
-                d: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
-                text: this.formatMoney(x.Withdrawal),
-                color: '#f13f77'
-            });
+    private setSummary(showExpenses: boolean) {
+        this.balance.Summary.forEach((x) => {
+            let date = new Date(x.Date);
+            let year = date.getFullYear();
+            let month = date.getMonth();
+            let day = date.getDate();
+
+            if (showExpenses && x.Withdrawal) {
+                this.summary.push({
+                    d: new Date(year, month, day),
+                    text: this.formatMoney(x.Withdrawal),
+                    color: '#f13f77'
+                });
+            }
+
+            if (!showExpenses && x.Deposit) {
+                this.summary.push({
+                    d: new Date(year, month, day),
+                    text: this.formatMoney(x.Deposit),
+                    color: '#8dec7d'
+                });
+            }
         });
     }
 

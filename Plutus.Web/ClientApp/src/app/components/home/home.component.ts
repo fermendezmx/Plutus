@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Balance, Receipt } from '../../models/index';
 import { AccountService, ReceiptService } from '../../services/index';
 import { mobiscroll } from '@mobiscroll/angular';
@@ -12,6 +12,7 @@ export class HomeComponent {
     //#region Private Fields
 
     private year: number;
+    private summary = [];
     private income: string;
     private expense: string;
     private balance: string;
@@ -21,7 +22,7 @@ export class HomeComponent {
 
     //#region Init
 
-    constructor(private accountService: AccountService, private receiptService: ReceiptService) {
+    constructor(private accountService: AccountService, private receiptService: ReceiptService, private detector: ChangeDetectorRef) {
         mobiscroll.settings = {
             theme: 'ios',
             onPosition: () => {
@@ -41,12 +42,16 @@ export class HomeComponent {
     private init(): void {
         let today = new Date();
         this.year = today.getFullYear();
+        let month = today.getMonth() + 1;
 
-        this.accountService.getBalance(this.year, today.getMonth() + 1,
+        this.accountService.getBalance(this.year, month,
             (result: Balance) => {
                 this.income = this.formatMoney(result.Income);
                 this.expense = this.formatMoney(result.Expense);
                 this.balance = this.formatMoney(result.Balance);
+                this.setSummary(result);
+
+                this.getDetail(`${this.year}-${month}-${today.getDate()}`);
             }, () => { });
     }
 
@@ -60,13 +65,10 @@ export class HomeComponent {
         this.setYear();
     }
 
-    private formatMoney(money: number): string {
-        return (money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    }
-
     private getDetail(date: string): void {
         this.receiptService.getAllByDate(date, (result: Receipt[]) => {
             this.receipts = result;
+            this.detector.detectChanges();
         }, () => { });
     }
 
@@ -74,6 +76,22 @@ export class HomeComponent {
         let node = $('.mbsc-cal-month');
         let title = node.text();
         node.text(title + ' ' + this.year);
+    }
+
+    private setSummary(balance: Balance) {
+        balance.Summary.forEach((x) => {
+            let date = new Date(x.Date);
+
+            this.summary.push({
+                d: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+                text: this.formatMoney(x.Withdrawal),
+                color: '#f13f77'
+            });
+        });
+    }
+
+    private formatMoney(money: number): string {
+        return (money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
 
     //#endregion

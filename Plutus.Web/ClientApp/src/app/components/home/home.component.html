@@ -1,17 +1,19 @@
-<mbsc-form>
-    <div class="mbsc-form-group">
-        <div class="mbsc-form-group-title">
-            <div>Income: ${{income}}</div>
-            <div>Expense: ${{expense}}</div>
-            <div>Balance: ${{balance}}</div>
+<div>
+    <mbsc-form>
+        <div class="mbsc-form-group">
+            <div class="mbsc-form-group-title">
+                <div>Income: ${{income}}</div>
+                <div>Expense: ${{expense}}</div>
+                <div>Balance: ${{balance}}</div>
+            </div>
+            <mbsc-calendar [(ngModel)]="labelDay"
+                           display="inline"
+                           [labels]="summary"
+                           (onSet)="setDay($event)"
+                           (onMonthChange)="changeMonth($event)"></mbsc-calendar>
         </div>
-        <mbsc-calendar [(ngModel)]="labelDay"
-                       display="inline"
-                       [labels]="labelDays"
-                       (onSet)="setDay($event)"
-                       (onMonthChange)="changeMonth($event)"></mbsc-calendar>
-    </div>
-</mbsc-form>
+    </mbsc-form>
+</div>
 <div>
     <ul>
         <li *ngFor="let receipt of receipts">

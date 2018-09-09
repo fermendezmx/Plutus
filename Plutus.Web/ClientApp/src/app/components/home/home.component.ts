@@ -18,6 +18,7 @@ export class HomeComponent {
     private expense: string;
     private balance: Balance;
     private receipts: Receipt[] = [];
+    private hasExpenses: boolean = true;
 
     //#endregion
 
@@ -45,16 +46,9 @@ export class HomeComponent {
         this.year = today.getFullYear();
         let month = today.getMonth() + 1;
 
-        this.accountService.getBalance(this.year, month,
-            (result: Balance) => {
-                this.balance = result;
-                this.income = this.formatMoney(result.Income);
-                this.expense = this.formatMoney(result.Expense);
-                this.total = this.formatMoney(result.Balance);
-                this.setSummary(true);
-
-                this.getDetail(`${this.year}-${month}-${today.getDate()}`);
-            }, () => { });
+        this.getBalance(month, () => {
+            this.getDetail(`${this.year}-${month}-${today.getDate()}`);
+        });
     }
 
     private setDay(event: any): void {
@@ -64,7 +58,24 @@ export class HomeComponent {
 
     private changeMonth(event: any): void {
         this.year = event.year;
+        this.summary = [];
         this.setYear();
+
+        this.getBalance(event.month + 1, () => {
+            this.detector.detectChanges();
+        });
+    }
+
+    private getBalance(month: number, onSuccess: () => void): void {
+        this.accountService.getBalance(this.year, month,
+            (result: Balance) => {
+                this.balance = result;
+                this.income = this.formatMoney(result.Income);
+                this.expense = this.formatMoney(result.Expense);
+                this.total = this.formatMoney(result.Balance);
+                this.setSummary();
+                onSuccess();
+            }, () => { });
     }
 
     private getDetail(date: string): void {
@@ -80,19 +91,20 @@ export class HomeComponent {
         node.text(title + ' ' + this.year);
     }
 
-    private setCalendar(showExpenses: boolean) {
+    private setCalendar(showExpenses: boolean) : void {
+        this.hasExpenses = showExpenses;
         this.summary = [];
-        this.setSummary(showExpenses);
+        this.setSummary();
     }
 
-    private setSummary(showExpenses: boolean) {
+    private setSummary() : void {
         this.balance.Summary.forEach((x) => {
             let date = new Date(x.Date);
             let year = date.getFullYear();
             let month = date.getMonth();
             let day = date.getDate();
 
-            if (showExpenses && x.Withdrawal) {
+            if (this.hasExpenses && x.Withdrawal) {
                 this.summary.push({
                     d: new Date(year, month, day),
                     text: this.formatMoney(x.Withdrawal),
@@ -100,7 +112,7 @@ export class HomeComponent {
                 });
             }
 
-            if (!showExpenses && x.Deposit) {
+            if (!this.hasExpenses && x.Deposit) {
                 this.summary.push({
                     d: new Date(year, month, day),
                     text: this.formatMoney(x.Deposit),

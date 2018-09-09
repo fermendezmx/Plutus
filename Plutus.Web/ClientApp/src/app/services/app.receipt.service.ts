@@ -36,7 +36,7 @@ export class ReceiptService {
             });
     }
 
-    public getAllByDate(date: Date, onSuccess: (data: any) => void, onError: (error: any) => void): void {
+    public getAllByDate(date: string, onSuccess: (data: any) => void, onError: (error: any) => void): void {
         this.http.get<XHRResponse<Receipt[]>>(this.baseUrl + `detail/${date}`)
             .subscribe(result => {
                 XHRHelper.response(result, onSuccess, onError);

@@ -2,3 +2,25 @@
 .mbsc-cal-btn-w:nth-child(2) {
     display: none;
 }
+
+.mbsc-ms-top.mbsc-ms-c, .mbsc-ms-bottom.mbsc-ms-c {
+    position: relative !important;
+}
+
+.mbsc-ms-item-sel.income {
+    background: #0f9c27 !important;
+    color: #fff !important;
+}
+
+.income {
+    color: #0f9c27 !important;
+}
+
+.expense {
+    color: #ef0833 !important;
+}
+
+.mbsc-ms-item-sel.expense {
+    background: #ef0833 !important;
+    color: #fff !important;
+}

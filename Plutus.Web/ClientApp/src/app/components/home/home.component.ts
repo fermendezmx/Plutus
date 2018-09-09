@@ -17,6 +17,7 @@ export class HomeComponent {
     private income: string;
     private expense: string;
     private balance: Balance;
+    private tab: string = 'expenses';
     private receipts: Receipt[] = [];
     private hasExpenses: boolean = true;
 
@@ -91,10 +92,11 @@ export class HomeComponent {
         node.text(title + ' ' + this.year);
     }
 
-    private setCalendar(showExpenses: boolean) : void {
-        this.hasExpenses = showExpenses;
+    private setCalendar(tab: string): void {
+        this.hasExpenses = tab == 'expenses';
         this.summary = [];
         this.setSummary();
+        this.tab = tab;
     }
 
     private setSummary() : void {
@@ -108,7 +110,7 @@ export class HomeComponent {
                 this.summary.push({
                     d: new Date(year, month, day),
                     text: this.formatMoney(x.Withdrawal),
-                    color: '#f13f77'
+                    color: '#ef0833'
                 });
             }
 
@@ -116,7 +118,7 @@ export class HomeComponent {
                 this.summary.push({
                     d: new Date(year, month, day),
                     text: this.formatMoney(x.Deposit),
-                    color: '#8dec7d'
+                    color: '#0f9c27'
                 });
             }
         });

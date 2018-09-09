@@ -1,6 +1,8 @@
 <div>
-    <button (click)="setCalendar(true)">Expenses</button>
-    <button (click)="setCalendar(false)">Incomes</button>
+    <mbsc-tab-nav>
+        <mbsc-nav-item class="income" [selected]="tab == 'incomes'" (click)="setCalendar('incomes')">Incomes</mbsc-nav-item>
+        <mbsc-nav-item class="expense" [selected]="tab == 'expenses'" (click)="setCalendar('expenses')">Expenses</mbsc-nav-item>
+    </mbsc-tab-nav>
 </div>
 <div>
     <mbsc-form>
@@ -17,10 +19,13 @@
         </div>
     </mbsc-form>
 </div>
-<div>
+<div *ngIf="!receipts.length">
+    <span>No transactions</span>
+</div>
+<div *ngIf="receipts.length">
     <ul>
         <li *ngFor="let receipt of receipts">
-            {{receipt.Category.Title}} - {{receipt.Title}} : {{receipt.Amount}}
+            <span>{{receipt.Category.Title}} - {{receipt.Title}} : {{receipt.Amount}}</span>
         </li>
     </ul>
 </div>

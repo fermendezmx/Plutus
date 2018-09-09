@@ -3,6 +3,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, AppJwtModule } from './modules/index';
 
@@ -35,6 +36,7 @@ import {
         FetchDataComponent
     ],
     imports: [
+        MbscModule,
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
         FormsModule,

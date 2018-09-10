@@ -8,9 +8,9 @@
     <mbsc-form>
         <div class="mbsc-form-group">
             <div class="mbsc-form-group-title">
-                <div>Income: ${{income}}</div>
-                <div>Expense: ${{expense}}</div>
-                <div>Balance: ${{total}}</div>
+                <div><span>Income:</span> <strong class="income">${{income}}</strong></div>
+                <div><span>Expense:</span> <strong class="expense">${{expense}}</strong></div>
+                <div><span>Balance:</span> <strong>${{total}}</strong></div>
             </div>
             <mbsc-calendar display="inline"
                            [labels]="summary"
@@ -20,12 +20,24 @@
     </mbsc-form>
 </div>
 <div *ngIf="!receipts.length">
-    <span>No transactions</span>
+    <mbsc-listview style="display:none">
+        <ng-container>
+            <mbsc-listview-item>
+                <span class="md-img-text"> No transactions</span>
+            </mbsc-listview-item>
+        </ng-container>
+    </mbsc-listview>
 </div>
-<div *ngIf="receipts.length">
-    <ul>
-        <li *ngFor="let receipt of receipts">
-            <span>{{receipt.Category.Title}} - {{receipt.Title}} : {{receipt.Amount}}</span>
-        </li>
-    </ul>
+<div>
+    <mbsc-listview style="display:none">
+        <ng-container>
+            <mbsc-listview-item *ngFor="let receipt of receipts">
+                <div class="md-icon" [ngStyle]="{'background': receipt.Category.Color}">
+                    <img src="{{receipt.Category.Icon}}" class="md-img">
+                </div>
+                <span class="md-img-text"> {{receipt.Title}}</span>
+                <span class="md-price" [ngClass]="{'income': receipt.Category.TypeId == 1, 'expense': receipt.Category.TypeId == 2}">{{formatMoney(receipt.Amount)}}</span>
+            </mbsc-listview-item>
+        </ng-container>
+    </mbsc-listview>
 </div>

@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.mbsc-form-group-title {
+    color: #000 !important;
+}
+
+.mbsc-form-group-title span {
+    margin-right: 10px;
+}
+
 .mbsc-cal-btn-w:nth-child(2) {
     display: none;
 }
@@ -23,4 +31,19 @@
 .mbsc-ms-item-sel.expense {
     background: #ef0833 !important;
     color: #fff !important;
+}
+
+.md-img {
+    margin: 8px;
+}
+
+.md-price {
+    float: right;
+}
+
+.md-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }

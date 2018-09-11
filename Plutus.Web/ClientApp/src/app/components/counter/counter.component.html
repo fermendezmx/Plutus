@@ -1,7 +1,20 @@
-<h1>Counter</h1>
-
-<p>This is a simple example of an Angular component.</p>
-
-<p>Current count: <strong>{{ currentCount }}</strong></p>
-
-<button (click)="incrementCounter()">Increment</button>
+<div>
+    <mbsc-tab-nav>
+        <mbsc-nav-item class="income" [selected]="tab == 'incomes'" (click)="setSummary('incomes')">Incomes</mbsc-nav-item>
+        <mbsc-nav-item class="expense" [selected]="tab == 'expenses'" (click)="setSummary('expenses')">Expenses</mbsc-nav-item>
+    </mbsc-tab-nav>
+</div>
+<div [chart]="summary"></div>
+<div>
+    <mbsc-listview style="display:none">
+        <ng-container>
+            <mbsc-listview-item *ngFor="let row of analysis.Summary">
+                <div class="md-icon" [ngStyle]="{'background': row.Category.Color}">
+                    <img src="{{row.Category.Icon}}" class="md-img">
+                </div>
+                <span class="md-img-text"> {{row.Category.Title}}</span>
+                <span class="md-price">{{formatMoney(row.Amount)}}</span>
+            </mbsc-listview-item>
+        </ng-container>
+    </mbsc-listview>
+</div>

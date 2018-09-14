@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Plutus.Context;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
@@ -13,9 +14,9 @@ namespace Plutus.Repository
     {
         private readonly ReceiptContext _context;
 
-        public ReceiptRepository()
+        public ReceiptRepository(IConfiguration configuration)
         {
-            _context = new ReceiptContext();
+            _context = new ReceiptContext(configuration);
         }
 
         #region Contract

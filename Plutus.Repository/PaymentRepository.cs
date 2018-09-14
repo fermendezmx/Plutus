@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Plutus.Context;
 using Plutus.Model.Entities;
 using Plutus.Repository.Contracts;
@@ -11,9 +12,9 @@ namespace Plutus.Repository
     {
         private readonly PaymentContext _context;
 
-        public PaymentRepository()
+        public PaymentRepository(IConfiguration configuration)
         {
-            _context = new PaymentContext();
+            _context = new PaymentContext(configuration);
         }
 
         #region Contract
